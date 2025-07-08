@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar-Verschlüsselung</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <h1>Caesar-Verschlüsselung</h1>
+        <p>Gib Text in eines der Felder ein, um ihn zu ver- oder entschlüsseln. Das innere Rad dreht sich entsprechend der gewählten Verschiebung.</p>
+
+        <div class="main-content">
+            <div class="text-fields">
+                <div class="field">
+                    <label for="plaintext">Klartext (Eingabe zum Verschlüsseln)</label>
+                    <textarea id="plaintext" rows="8" placeholder="Hier den Klartext eingeben..."></textarea>
+                </div>
+                <div class="field">
+                    <label for="ciphertext">Geheimtext (Eingabe zum Entschlüsseln)</label>
+                    <textarea id="ciphertext" rows="8" placeholder="Hier den Geheimtext eingeben..."></textarea>
+                </div>
+            </div>
+
+            <div class="controls">
+                <h2>Steuerung</h2>
+                <div class="slider-container">
+                    <label for="shift">Verschiebung: <span id="shift-value">3</span></label>
+                    <input type="range" id="shift" min="0" max="25" value="3">
+                </div>
+
+                <div class="wheel-container">
+                    <svg id="cipher-wheel" viewBox="0 0 200 200">
+                        <defs>
+                            <path id="outer-path" d="M 100, 100 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" fill="none"/>
+                            <path id="inner-path" d="M 100, 100 m -60, 0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0" fill="none"/>
+                        </defs>
+
+                        <g id="outer-wheel">
+                            <circle cx="100" cy="100" r="95" class="wheel-bg-outer"/>
+                            <text class="wheel-text-outer outer-text">
+                                <textPath href="#outer-path">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</textPath>
+                            </text>
+                        </g>
+
+                        <g id="inner-wheel">
+                            <circle cx="100" cy="100" r="70" class="wheel-bg-inner"/>
+                            <text class="wheel-text-inner inner-text">
+                                <textPath href="#inner-path">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</textPath>
+                            </text>
+                        </g>
+                        
+                        <circle cx="100" cy="100" r="8" class="wheel-center"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
